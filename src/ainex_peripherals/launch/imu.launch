@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="debug"               default="false"/>
+    <arg name="use_mag"             default="true"/>
+    <arg name="mag_topic"           default="/ros_robot_controller/mag"/>
+    <arg name="imu_raw_topic"       default="/ros_robot_controller/imu_raw"/>
+    <arg name="imu_frame"           default="imu_frame"/>
+    <arg name="imu_link"            default="imu_link"/>
+    <arg name="imu_topic"           default="imu"/>
+
+    <group if="$(arg debug)">
+        <param name="robot_description" command="$(find xacro)/xacro '$(find ainex_description)/urdf/ainex.urdf.xacro'" />
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+        <node name="tf_broadcaster_imu" pkg="ainex_peripherals" type="tf_broadcaster_imu.py" output="screen">
+            <param name="imu_topic" value="$(arg imu_topic)"/>
+            <param name="imu_frame" value="$(arg imu_frame)"/>
+            <param name="imu_link"  value="$(arg imu_link)"/>
+        </node>
+    </group>
+
+    <node name="imu_calib" pkg="imu_calib" type="apply_calib" output="screen" >
+        <param name="calib_file" value="$(find ainex_calibration)/config/imu_calib.yaml" />
+        <remap from="raw"        to="$(arg imu_raw_topic)" />
+        <remap from="corrected"  to="imu_corrected"/>
+    </node>
+
+    <node name="imu_filter" pkg="imu_complementary_filter" type="complementary_filter_node" >
+        <param name="use_mag"             value="$(arg use_mag)"/>
+        <param name="gain_acc"            value="0.2"/>
+        <!--<param name="gain_mag"            value="0.05"/>-->
+        <param name="bias_alpha"          value="0.2"/>
+        <param name="do_bias_estimation"  value="true"/>
+        <param name="do_adaptive_gain"    value="true"/>
+        <remap from="imu/data_raw"        to="imu_corrected"/>
+        <remap from="imu/data"            to="$(arg imu_topic)"/>
+        <remap from="imu/mag"             to="$(arg mag_topic)"/>
+    </node>
+
+    <node if="$(arg debug)" name="rviz" pkg="rviz" type="rviz" args="-d $(find ainex_peripherals)/rviz/imu.rviz"/>
+</launch>

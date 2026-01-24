@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find ros_robot_controller)/launch/ros_robot_controller_node.launch"/>
+    <node name="mag_calib" pkg="calibration_imu" type="magnetometer" output="screen">
+        <remap from="imu/magnetometer" to="/ros_robot_controller/mag_raw"/>
+    </node>
+</launch>

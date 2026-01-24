@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--跨栏(hurdling)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--跨栏(hurdling)-->
+    <node pkg="ainex_example" type="hurdles_with_visual_patrol_node.py" name="hurdles" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

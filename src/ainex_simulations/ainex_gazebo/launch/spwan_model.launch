@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find ainex_description)/urdf/ainex.xacro'" />
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model ainex
+        -x 0 -y 0 -z 0.24 -J l_sho_roll -1.403 -J l_el_yaw -1.226 -J r_sho_roll 1.403 -J r_el_yaw 1.226" respawn="false" output="screen" />
+    <include file="$(find ainex_gazebo)/launch/position_controller.launch"/>
+</launch>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--apriltag追踪(apriltag tracking)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--apriltag识别节点(apriltag recognition node)-->
+    <include file="$(find ainex_example)/scripts/apriltag_detection/apriltag_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--apriltag追踪(apriltag tracking)-->
+    <node pkg="ainex_example" type="apriltag_track_node.py" name="apriltag_track" output="screen">
+        <rosparam file="$(find ainex_example)/config/apriltag_track_pid.yaml" command="load"/>
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

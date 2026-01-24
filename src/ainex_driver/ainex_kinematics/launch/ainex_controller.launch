@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="gazebo_sim" default="false"/>
+    <include file="$(find ros_robot_controller)/launch/ros_robot_controller_node.launch"/>
+    <node pkg="ainex_kinematics" type="ainex_controller.py" name="ainex_controller" output="screen">
+        <rosparam file="$(find ainex_kinematics)/config/init_pose.yaml" command="load"/>
+        <rosparam file="$(find ainex_kinematics)/config/servo_controller.yaml" command="load"/>
+        <param name="gazebo_sim"    value="$(arg gazebo_sim)"/>
+    </node>
+</launch>

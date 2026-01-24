@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--rgb摄像头标定(RGB camera calibration)-->
+<launch>
+    <!--出厂已标定，非必要务标定(calibrated before delivery, so you don't need to calibrate by yourself unless necessary.)-->-->
+    <arg name="camera_name" default="usb_cam" />
+
+    <!--棋盘格大小(size of the chessboard)-->
+    <arg name="size"    default="8x6" />
+    <arg name="square"  default="0.0143" />
+
+    <!--USB摄像头(USB camera)-->
+    <include file="$(find ainex_peripherals)/launch/usb_cam.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+    </include>
+
+    <!--启动标定节点(start calibration node)-->
+    <node pkg="camera_calibration" type="cameracalibrator.py" name="camera_calibrator" output="screen"
+        args="
+        --size $(arg size)
+        --square $(arg square)
+        --k-coefficients=3
+        image:=/$(arg camera_name)/image_raw
+        camera:=$(arg camera_name)"/>
+</launch>

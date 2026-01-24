@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--颜色追踪(color tracking)-->
+<launch>
+    <rosparam file="$(find ainex_example)/config/color_track_pid.yaml" command="load"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch">
+        <arg name="enable_camera"       value="false"/>
+        <arg name="enable_web_video"    value="false"/>
+    </include>
+
+    <!--人脸识别节点(face recognition node)-->
+    <include file="$(find ainex_example)/scripts/face_detect/face_detect_node.launch">
+        <arg name="enable_camera"       value="false"/>
+        <arg name="enable_web_video"    value="false"/>
+    </include>
+
+    <node pkg="ainex_app" type="app_node.py" name="app" output="screen">
+        <rosparam file="$(find ainex_example)/config/color_track_pid.yaml" command="load" ns="color_track"/>
+    </node>
+</launch>

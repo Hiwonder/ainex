@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--上阶梯(up steps)-->
+<launch>
+    <arg name="start"   default="true"/>
+    <arg name="state"   default="descend_stairs"/>
+
+    <arg name="climb_stairs"    default="climb_stairs"/>
+    <arg name="descend_stairs"  default="descend_stairs"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--上阶梯(up steps)-->
+    <node pkg="ainex_example" type="climb_stairs_node.py" name="climb_stairs" output="screen">
+        <param name="start"  value="$(arg start)"/>
+        <param name="state"  value="$(arg state)"/>
+    </node>
+</launch>

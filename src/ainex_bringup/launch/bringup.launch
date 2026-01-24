@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--此launch文件被设定为自启动，自启文件路径:/etc/systemd/system/start_app_node.service 方式systemd，
+(this launch file is set as auto-start. The path of the auto-start file is /etc/systemd/system/start_app_node.service  method:systemd)
+关闭自启（重启后失效）：sudo systemctl stop start_app_node.service
+(close auto-start(invalid after reboot)：sudo systemctl stop start_app_node.service)
+开启自启（重启后失效）：sudo systemctl start start_app_node.service
+(enable auto-start(invalid after reboot): sudo systemctl start start_app_node.service)
+永久关闭自启（重启依旧生效）：sudo systemctl disable start_app_node.service
+(close auto-start permanently(still valid after reboot)：sudo systemctl disable start_app_node.service)
+永久开启自启（重启依旧生效）：sudo systemctl enable start_app_node.service
+(enable auto-start permanently(still valid after reboot):sudo systemctl enable start_app_node.service)
+重启自启：sudo systemctl restart start_app_node.service
+(restart auto-start:sudo systemctl restart start_app_node.service)
+查看自启：sudo systemctl status start_app_node.service
+(check auto-start: sudo systemctl status start_app_node.service)
+-->
+<launch>
+    <arg name="camera_name"     default="camera"/>
+    <arg name="image_topic"     default="image_raw"/>
+
+    <!--摄像头节点(camera node)-->
+    <include file="$(find ainex_peripherals)/launch/usb_cam_with_calib.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <!--base节点(base node)-->
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--手柄控制节点(joystick control node)-->
+    <include file="$(find ainex_peripherals)/launch/joystick_control.launch"/>
+
+    <!--app画面传输(app image transimission)-->
+    <node name="web_video_server" pkg="web_video_server" respawn="true" respawn_delay="2"  type="web_video_server" output="screen"/>
+
+    <!--app通信(app communication)-->
+    <include file="$(find ainex_app)/launch/rosbridge.launch"/>
+
+    <!--app玩法(app game)-->
+    <include file="$(find ainex_app)/launch/start.launch"/>
+</launch>

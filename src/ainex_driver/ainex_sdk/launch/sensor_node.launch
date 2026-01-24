@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="sensor" pkg="ainex_sdk" type="sensor_node.py" required="true" output="screen"/>
+</launch>

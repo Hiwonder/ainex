@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--颜色分拣(color sorting)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch">
+        <arg name="enable_roi"  default="true"/>
+    </include>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--颜色分拣(color sorting)-->
+    <node pkg="ainex_example" type="color_sort_node.py" name="color_sort" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

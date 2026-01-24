@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--跌倒起立(standing up)-->
+<launch>
+    <arg name="start" default="true"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--跌倒起立(standing up)-->
+    <node pkg="ainex_example" type="fall_rise_node.py" name="fall_rise" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

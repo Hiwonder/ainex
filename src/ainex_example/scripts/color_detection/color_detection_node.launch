@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--颜色识别(color recognition)-->
+<launch>
+    <arg name="enable_camera"       default="true"/>
+    <arg name="enable_web_video"    default="true"/>
+    <arg name="enable_roi"          default="true"/>
+    <arg name="node_name"           default="color_detection"/>
+    <arg name="debug"               default="false"/>
+    <arg name="enable_display"      default="false"/>
+    <arg name="camera_name"         default="camera"/>
+    <arg name="image_topic"         default="image_rect_color"/>
+
+    <!--摄像头节点(camera node)-->
+    <include if="$(arg enable_camera)" file="$(find ainex_peripherals)/launch/usb_cam_with_calib.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <node if="$(arg enable_web_video)"  name="web_video_server" pkg="web_video_server" respawn="true" respawn_delay="2"  type="web_video_server" output="screen"/>
+
+    <!--颜色识别(color recognition)-->
+    <node pkg="ainex_example" type="color_detection_node.py" name="$(arg node_name)" output="screen">
+        <!--直接开启识别颜色(directly start color recognition)-->
+        <param name="debug"             value="$(arg debug)"/>
+        <!--显示画面(display image)-->
+        <param name="enable_display"    value="$(arg enable_display)"/>
+        <param name="enable_roi"        value="$(arg enable_roi)"/>
+    </node>
+</launch>

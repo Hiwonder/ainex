@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- startup simulated world -->
+    <include file="$(find ainex_gazebo)/launch/empty_world.launch">
+        <arg name="paused"          value="true"/>
+        <arg name="use_sim_time"    value="true"/>
+        <arg name="gui"             value="true"/>
+        <arg name="headless"        value="false"/>
+        <arg name="debug"           value="false"/>
+    </include>
+
+    <include file="$(find ainex_gazebo)/launch/spwan_model.launch"/>
+</launch>

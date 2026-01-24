@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--巡线抓取(line following and picking)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--巡线抓取(line following and picking)-->
+    <node pkg="ainex_example" type="visual_patrol_pick_up_node.py" name="visual_patrol_pick_up" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

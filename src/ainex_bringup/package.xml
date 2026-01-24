@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ainex_bringup</name>
+  <version>0.0.0</version>
+  <description>The ainex_bringup package</description>
+
+  <maintainer email="ainex@todo.todo">ainex</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

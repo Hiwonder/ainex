@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--视觉巡线(visual line following)-->
+<launch>
+    <arg name="color"  default="black"/>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--视觉巡线(visual line following)-->
+    <node pkg="ainex_example" type="visual_patrol_node.py" name="visual_patrol" output="screen">
+        <param name="start"  value="$(arg start)"/>
+        <param name="color"  value="$(arg color)"/>
+    </node>
+</launch>

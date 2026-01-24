@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--自主搬运(autonomous transport)-->
+<launch>
+    <arg name="color"  default="red"/>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch">
+        <arg name="enable_camera"    value="false"/>
+         <arg name="enable_web_video"    value="false"/>
+    </include>
+
+    <!--apriltag识别节点(apriltag recognition node)-->
+    <include file="$(find ainex_example)/scripts/apriltag_detection/apriltag_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--自主搬运(autonomous transport)-->
+    <node pkg="ainex_example" type="autonomous_transport_node.py" name="autonomous_transport" output="screen">
+        <param name="start"  value="$(arg start)"/>
+        <param name="color"  value="$(arg color)"/>
+    </node>
+</launch>

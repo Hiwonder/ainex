@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--十字路口检测(intersection detection)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--十字路口检测(intersection detection)-->
+    <node pkg="ainex_example" type="cross_detect_node.py" name="cross_detect" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

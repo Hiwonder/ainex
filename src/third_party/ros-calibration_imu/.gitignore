@@ -1,0 +1,7 @@
+# Ignore IDE files
+*.user
+*.autosave
+.vscode/
+
+# Ignore documentation files
+doc/html

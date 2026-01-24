@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--巡线+跨栏+上下台阶(line following, hurdling, and up and down steps)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--巡线+跨栏+上下台阶(line following, hurdling, and up and down steps)-->
+    <node pkg="ainex_example" type="combination_node.py" name="combination" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

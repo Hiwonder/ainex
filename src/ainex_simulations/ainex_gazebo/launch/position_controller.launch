@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<launch>
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find ainex_gazebo)/config/position_controller.yaml" command="load"/>
+
+  <node pkg="controller_manager" type="spawner" name="controller_spawner" respawn="false"
+  output="screen" args="joint_state_controller
+                                    l_hip_yaw_controller
+                                    l_hip_roll_controller
+                                    l_hip_pitch_controller
+                                    l_knee_controller
+                                    l_ank_roll_controller
+                                    l_ank_pitch_controller
+                                    r_hip_yaw_controller
+                                    r_hip_roll_controller
+                                    r_hip_pitch_controller
+                                    r_knee_controller
+                                    r_ank_roll_controller
+                                    r_ank_pitch_controller
+                                    l_gripper_controller
+                                    l_el_yaw_controller
+                                    l_el_pitch_controller
+                                    l_sho_roll_controller
+                                    l_sho_pitch_controller
+                                    r_gripper_controller
+                                    r_el_yaw_controller
+                                    r_el_pitch_controller
+                                    r_sho_pitch_controller
+                                    r_sho_roll_controller
+                                    head_pan_controller
+                                    head_tilt_controller" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+  </node>
+</launch>

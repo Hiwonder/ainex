@@ -1,0 +1,2 @@
+# Ignore ModemManager for ttyACM0 device
+KERNEL=="ttyAMA0", SUBSYSTEM=="tty", GROUP="dialout", MODE="0777", SYMLINK+="rrc"

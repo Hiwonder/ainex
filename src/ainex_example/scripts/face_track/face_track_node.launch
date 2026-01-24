@@ -1,0 +1,18 @@
+<?xmal version="1.0"?>
+<!--人脸追踪(face tracking)-->
+<launch>
+    <arg name="start"           default="true"/>
+    <arg name="confidence"      default="0.5"/>
+
+    <include file="$(find ainex_example)/scripts/face_detect/face_detect_node.launch">
+        <arg name="confidence" value="$(arg confidence)"/>
+    </include>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--人脸追踪(face tracking)-->
+    <node pkg="ainex_example" type="face_track_node.py" name="face_track" output="screen">
+        <rosparam file="$(find ainex_example)/config/face_track_pid.yaml" command="load"/>
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

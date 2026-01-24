@@ -1,0 +1,14 @@
+<package format="2">
+  <name>ainex_gazebo</name>
+  <version>1.0.0</version>
+  <description>The ainex_gazebo package</description>
+  <author>ainex</author>
+  <maintainer email="ainex@email.com" />
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roslaunch</depend>
+  <depend>gazebo</depend>
+  <export>
+    <architecture_independent />
+  </export>
+</package>

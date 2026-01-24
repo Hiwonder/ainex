@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--颜色追踪(color tracking)-->
+<launch>
+    <arg name="color"  default="blue"/>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--颜色追踪(color tracking)-->
+    <node pkg="ainex_example" type="color_track_node.py" name="color_track" output="screen">
+        <rosparam file="$(find ainex_example)/config/color_track_pid.yaml" command="load"/>
+        <param name="start"  value="$(arg start)"/>
+        <param name="color"  value="$(arg color)"/>
+    </node>
+</launch>

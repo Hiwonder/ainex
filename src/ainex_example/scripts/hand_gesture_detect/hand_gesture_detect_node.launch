@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--手势检测(gesture detection)-->
+<launch>
+    <arg name="start"   default="true"/>
+
+    <arg name="camera_name"     default="camera"/>
+    <arg name="image_topic"     default="image_rect_color"/>
+
+    <!--摄像头节点(camera node)-->
+    <include file="$(find ainex_peripherals)/launch/usb_cam_with_calib.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <node name="web_video_server" pkg="web_video_server" respawn="true" respawn_delay="2"  type="web_video_server" output="screen"/>
+
+    <node pkg="ainex_example" type="hand_gesture_detect_node.py" name="hand_gesture_detect" output="screen">
+        <param name="start" value="$(arg start)"/>
+    </node>
+</launch>

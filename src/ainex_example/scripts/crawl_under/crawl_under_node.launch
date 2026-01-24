@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--低空穿越(Low Clearance Passage)-->
+<launch>
+    <arg name="start"  default="true"/>
+
+    <!--颜色识别节点(color recognition node)-->
+    <include file="$(find ainex_example)/scripts/color_detection/color_detection_node.launch"/>
+
+    <include file="$(find ainex_bringup)/launch/base.launch"/>
+
+    <!--低空穿越(Low Clearance Passage)-->
+    <node pkg="ainex_example" type="crawl_under_with_visual_patrol_node.py" name="crawl_under_with_visual_patrol" output="screen">
+        <param name="start"  value="$(arg start)"/>
+    </node>
+</launch>

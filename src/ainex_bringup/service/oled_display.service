@@ -1,0 +1,15 @@
+[Unit]
+Description=oled display
+After=NetworkManager.service time-sync.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+KillMode=mixed
+ExecStart=/home/ubuntu/ros_ws/src/ainex_bringup/scripts/source_env.bash python3 /home/ubuntu/ros_ws/src/ainex_bringup/scripts/oled_display.py
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target

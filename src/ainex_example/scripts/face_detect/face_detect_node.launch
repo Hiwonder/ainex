@@ -1,0 +1,25 @@
+<?xmal version="1.0"?>
+<!--人脸识别(face recognition)-->
+<launch>
+    <arg name="confidence"          default="0.5"/>
+    <arg name="enable_display"      default="false"/>
+    <arg name="enable_camera"       default="true"/>
+    <arg name="enable_web_video"    default="true"/>
+    <arg name="camera_name"         default="camera"/>
+    <arg name="image_topic"         default="image_rect_color"/>
+
+    <!--摄像头节点(camera node)-->
+    <include if="$(arg enable_camera)" file="$(find ainex_peripherals)/launch/usb_cam_with_calib.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <node if="$(arg enable_web_video)" name="web_video_server" pkg="web_video_server" respawn="true" respawn_delay="2"  type="web_video_server" output="screen"/>
+
+    <!--人脸识别(face recognition)-->
+    <node pkg="ainex_example" type="face_detect_node.py" name="face_detect" output="screen">
+        <!--显示画面(display image)-->
+        <param name="enable_display"    value="$(arg enable_display)"/>
+        <param name="confidence"        value="$(arg confidence)"/>
+    </node>
+</launch>

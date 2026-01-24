@@ -1,0 +1,19 @@
+<launch>
+    <arg name="camera_name" default="camera" />
+
+    <group ns="$(arg camera_name)">
+        <arg name="manager" default="manager"/>
+
+        <!--启动nodelet前需要启动它(enable it before enabling nodelet)-->
+        <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager --no-bond"/>
+
+        <!--摄像头标定， 彩色标定输出(camera calibration, and color calibration output)-->
+        <node pkg="nodelet" type="nodelet" name="rectify_color" args="load image_proc/rectify $(arg manager) --no-bond">
+            <param name="queue_size"  value="10"/>
+            <remap from="camera"      to="$(arg camera_name)"/>
+            <remap from="image_mono"  to="/$(arg camera_name)/image_raw"/>
+            <remap from="camera_info" to="/$(arg camera_name)/camera_info"/>
+            <remap from="image_rect"  to="/$(arg camera_name)/image_rect_color"/>
+        </node>
+    </group>
+</launch>

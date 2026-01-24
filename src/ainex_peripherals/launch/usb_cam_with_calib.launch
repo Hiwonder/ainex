@@ -1,0 +1,13 @@
+<launch>
+    <arg name="camera_name" default="camera" />
+    <arg name="image_topic" default="image_raw" /> <!--image_raw/image_rect_color-->
+
+    <include file="$(find ainex_peripherals)/launch/usb_cam.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <include file="$(find ainex_peripherals)/launch/image_calib.launch">
+        <arg name="camera_name" value="$(arg camera_name)"/>
+    </include>
+</launch>

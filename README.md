@@ -19,15 +19,19 @@ At the heart of AiNex is a simple yet profound ambition: to transform the sophis
 ### High-Performance Hardware Designed for Human-Like Intelligence
 
 The core of AiNex's design is to grant it human-like mobility. Powered by a Raspberry Pi 4B/5 as its computational brain and driven by 24 intelligent serial bus servos, it achieves precise and flexible pose control. Bipedal walking, climbing over obstacles, and complex gestures are all within its capabilities. The integrated 2-DOF HD camera and openable dexterous robotic hands form the foundation for its perception and interaction with the world. All of this is housed within a sturdy metal frame, ensuring stability during dynamic tasks.
+
 <p align="center">
   <img src="./sources/ainex 3.png" alt="AiNex Logo" width="600"/>
 </p>
+
 ### Core Capabilities Powered by Open-Source Algorithms
 
 AiNex's intelligence stems from its open software stack. Its soul is the advanced inverse kinematics algorithm, enabling omnidirectional movement, flexible gait planning, and real-time pose adjustment for fluid and natural motions like walking, turning, and stair climbing. Combined with OpenCV-based machine vision, AiNex accomplishes advanced AI applications such as precise color/object recognition, visual tracking, line following, and intelligent sorting. From camera capture to cognitive decision-making and coordinated whole-body movement, it forms a complete intelligent loop.
+
 <p align="center">
   <img src="./sources/ainex 4.png" alt="AiNex Logo" width="600"/>
 </p>
+
 ### Your Project, Your Infinite Possibilities
 
 AiNex is a true development platform. We provide complete ROS source code, extensive tutorials, and a vibrant community to support your journey from basic motion control to cutting-edge AI research. Whether you're exploring reinforcement learning for bipedal locomotion, developing human-robot interaction systems, or prototyping service robot applications, AiNex is ready to bring your vision to life.

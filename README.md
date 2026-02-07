@@ -12,14 +12,22 @@ English | [中文](https://github.com/Hiwonder/ainex/blob/main/README_cn.md)
 
 At the heart of AiNex is a simple yet profound ambition: to transform the sophisticated humanoid robots of research labs into an accessible "companion" for every developer, student, and researcher. It is more than a hardware kit; it is a fully open-source intelligent entity built upon the Robot Operating System (ROS). We believe true innovation happens when algorithms step out of simulation and learn to "stand" and "walk" in the real, physical world. AiNex was created for this purpose—a 24-DOF bipedal robot designed to be your most exciting experimental platform for exploring mobile robotics, computer vision, and artificial intelligence.
 
+<p align="center">
+  <img src="./sources/ainex 2.png" alt="AiNex Logo" width="600"/>
+</p>
+
 ### High-Performance Hardware Designed for Human-Like Intelligence
 
 The core of AiNex's design is to grant it human-like mobility. Powered by a Raspberry Pi 4B/5 as its computational brain and driven by 24 intelligent serial bus servos, it achieves precise and flexible pose control. Bipedal walking, climbing over obstacles, and complex gestures are all within its capabilities. The integrated 2-DOF HD camera and openable dexterous robotic hands form the foundation for its perception and interaction with the world. All of this is housed within a sturdy metal frame, ensuring stability during dynamic tasks.
-
+<p align="center">
+  <img src="./sources/ainex 3.png" alt="AiNex Logo" width="600"/>
+</p>
 ### Core Capabilities Powered by Open-Source Algorithms
 
 AiNex's intelligence stems from its open software stack. Its soul is the advanced inverse kinematics algorithm, enabling omnidirectional movement, flexible gait planning, and real-time pose adjustment for fluid and natural motions like walking, turning, and stair climbing. Combined with OpenCV-based machine vision, AiNex accomplishes advanced AI applications such as precise color/object recognition, visual tracking, line following, and intelligent sorting. From camera capture to cognitive decision-making and coordinated whole-body movement, it forms a complete intelligent loop.
-
+<p align="center">
+  <img src="./sources/ainex 4.png" alt="AiNex Logo" width="600"/>
+</p>
 ### Your Project, Your Infinite Possibilities
 
 AiNex is a true development platform. We provide complete ROS source code, extensive tutorials, and a vibrant community to support your journey from basic motion control to cutting-edge AI research. Whether you're exploring reinforcement learning for bipedal locomotion, developing human-robot interaction systems, or prototyping service robot applications, AiNex is ready to bring your vision to life.

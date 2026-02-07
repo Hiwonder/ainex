@@ -36,6 +36,16 @@ AiNex's intelligence stems from its open software stack. Its soul is the advance
 
 AiNex is a true development platform. We provide complete ROS source code, extensive tutorials, and a vibrant community to support your journey from basic motion control to cutting-edge AI research. Whether you're exploring reinforcement learning for bipedal locomotion, developing human-robot interaction systems, or prototyping service robot applications, AiNex is ready to bring your vision to life.
 
+## Demo Videos
+### Main Tutorials
+- **AiNex - ROS AI Educational Walking Humanoid Robot Raspberry Pi Competition Robot**: [Watch](https://www.youtube.com/watch?v=Oizs08q8_9g)
+
+### Your Ideas, In Action
+- **When did robots get so quirky? 🎄🤖**: [Watch](https://www.youtube.com/shorts/CXewMZ_aOFM)
+- **Watch AiNex effortlessly soaring to snatch the object from a distance**: [Watch](https://www.youtube.com/shorts/EnTP0MkB2ic)
+- **AiNex 💪is lifting a dumbbell using its flexible mechanical hands 👉**: [Watch](https://www.youtube.com/shorts/OUJv9BwR1rk)
+- **AiNex has a mind-blowing 16DOF flexible body 🤸‍♀️, and now, it's got some pretty nifty hands too✨**: [Watch](https://www.youtube.com/shorts/0nQ7VIA_-94)
+  
 ## Official Resources
 
 ### Official Hiwonder

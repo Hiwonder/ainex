@@ -3,7 +3,7 @@
 English | [中文](https://github.com/Hiwonder/ainex/blob/main/README_cn.md)
 
 <p align="center">
-  <img src="./sources/images/ainex.png" alt="AiNex Logo" width="600"/>
+  <img src="./sources/ainex 1.png" alt="AiNex Logo" width="600"/>
 </p>
 
 ## Product Overview
